@@ -2,25 +2,28 @@
 
 This project demos the eVTOL Simulation platforman
 
-## How to build
+## How to build & Run
 
-### Make sure you have gcc installed on your laptop
+* Make sure you have gcc installed on your laptop
 
-### no other library needed except gTest if you want to run unittest
+* no other library needed except gTest if you want to run unittest
 
 ### How to build
     ```
     $ mkdir build && cd build && cmake ..
     $ make
     ```
+
 ### How to run
     ```
     $ ./EvSim
     ```
+
 ### How to unitTest
     ```
     $ test/unit_tests
     ```
+
 ## Design introduction
 
 ### Class
@@ -29,7 +32,7 @@ This project demos the eVTOL Simulation platforman
 
 SimQueue is a class with the following extend capability of std::priorityQueue
 
-1.  It has capacity for the queue. Once the queue is full, the further push will go into a waiting
+1.  It can set sizef of the queue. Once the queue is full, the further push will go into a waiting
     FIFO queue. When being popped, and the waiting queue is not empty, it will automatically pop an
     entry from waiting FIFO queue and push into priority Queue
 2.  BEFORE entry being pushed into the priority Queue, EnterTrigger function being called
