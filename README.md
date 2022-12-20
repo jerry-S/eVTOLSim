@@ -10,20 +10,20 @@ This project demos the eVTOL Simulation platforman
 
 ### How to build
 
-    ```bash
+    ```
     $ mkdir build && cd build $$ cmake ..
     $ make
     ```
 
 ### How to run
 
-    ```bash
+    ```
     $ ./EvSim
     ```
 
 ### How to unitTest
 
-    ```bash
+    ```
     $ test/unit_tests
     ```
 
@@ -45,7 +45,7 @@ SimQueue is a class with the following extend capability of std::priorityQueue
     the entry being pushed in to queue.
 5.  intead of returning void for std::prirorityQueue.pop(), our returns T being popped
 
-The SimQueue, liek priorityQueue, is data struction agonistic, by using template. It achieves static polymorphic
+The SimQueue, like the priorityQueue, is data struction agonistic, by using template. It achieves static polymorphic
 A simple unit test for SimQueue in in test/simQueueTest.cpp
 
 #### EVSpec
@@ -71,4 +71,4 @@ The class runs the Simulation. It does the following
 4. When simulation time reached. Force to land all EVs and disconnect charges
 5. Print Summary
 
-default it runs as debug mode to print friendly progress why running. Set "constexpr bool debug" to false to run full speed
+default it runs as debug mode to print friendly progress while running. Set "constexpr bool debug" at line 19 main.cpp to false to run full speed
