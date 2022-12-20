@@ -9,24 +9,18 @@ This project demos the eVTOL Simulation platforman
 ### no other library needed except gTest if you want to run unittest
 
 ### How to build
-
     ```
-    $ mkdir build && cd build $$ cmake ..
+    $ mkdir build && cd build && cmake ..
     $ make
     ```
-
 ### How to run
-
     ```
     $ ./EvSim
     ```
-
 ### How to unitTest
-
     ```
     $ test/unit_tests
     ```
-
 ## Design introduction
 
 ### Class
