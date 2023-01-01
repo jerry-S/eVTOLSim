@@ -2,7 +2,7 @@
 #include <cstdlib>
 using namespace std;
 
-vector<int> SimpleRandomGenAlg::randomGen(int typeNum, int totalNum) {
+vector<int> SimpleRandomGenAlg::generate(int typeNum, int totalNum) {
     vector<int> result;
 
     srand((unsigned)time(NULL));

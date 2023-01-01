@@ -39,8 +39,8 @@ SimQueue is a class with the following extend capability of std::priorityQueue
 3.  BEFORE entry being popped from the priority Queue, ExitTrigger function being called
 4.  In push, pop functions, add an curr argument, which indicates the time when push or pop happens
     Note the priority queue might be full at the time being pushed, so curr might not be the acutual time
-    the entry being pushed in to queue.
-5.  intead of returning void for std::prirorityQueue.pop(), our returns T being popped
+    the entry being pushed into queue.
+5.  intead of returning void for std::prirorityQueue.pop(), in our case, T being popped
 
 The SimQueue, like the priorityQueue, is data struction agonistic, by using template. It achieves static polymorphic
 A simple unit test for SimQueue in in test/simQueueTest.cpp

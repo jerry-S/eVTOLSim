@@ -8,6 +8,7 @@
 #include "ev/inc/ev.h"
 #include "queue/inc/SimQueue.h"
 #include "random/inc/simpleRandomGen.h"
+#include "random/inc/evenlyGen.h"
 
 using namespace std;
 
@@ -33,7 +34,8 @@ private:
     class mycomparison {
     public:
         bool operator()(shared_ptr<EV>& a, shared_ptr<EV>& b) const {
-            return a->getExpectEndTime() > b->getExpectEndTime();
+            return a->getExpectEndTime() == b->getExpectEndTime() ? a->getVendorIndex() > b->getVendorIndex() : a->getExpectEndTime() > b->getExpectEndTime();
+            //return a->getExpectEndTime() > b->getExpectEndTime();
         }
     }; // function object used in priority queue sorting
 
@@ -185,7 +187,7 @@ public:
           flyingQueue(INT_MAX), chargingQueue(totalChargers) {
         /*Randomly Generate EV list*/
         std::vector<int> evArrays;
-        evArrays = RandomGen::randomGen(totalVendors, totalEVs);
+        evArrays = RandomGen::generate(totalVendors, totalEVs);
         sort(evArrays.begin(), evArrays.end());
         /*Generate EV objects accordingly*/
         for (int i = 0; i < evArrays.size(); ++i) {
@@ -256,7 +258,8 @@ int main(int argc, char** argv) {
     int totalVendors = sizeof(dict_entries) / sizeof(Dict_entry);
 
     /*Create Platform to Simulate*/
-    SimPlatform<SimpleRandomGenAlg> simPlatform(
+    //SimPlatform<SimpleRandomGenAlg> simPlatform(
+    SimPlatform<EvenlyGenAlg> simPlatform(
         totalVendors, totalEVs, totalChargers, totalSimHours);
     simPlatform.run();
 

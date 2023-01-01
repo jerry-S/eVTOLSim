@@ -4,7 +4,7 @@ using namespace std;
 /**
  * @brief Class or strategy to generate random EVs from different vendors. Strategy pattern
  */
-class SimpleRandomGenAlg {
+class EvenlyGenAlg {
 public:
     /**
      * @brief Simple way to generate EVs from different vendors
@@ -15,5 +15,5 @@ public:
      * @return list of EVs
      */
     static vector<int> generate(int vendorNum, int totalNum);
-    SimpleRandomGenAlg() = delete;
+    EvenlyGenAlg() = delete;
 };
