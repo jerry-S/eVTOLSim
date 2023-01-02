@@ -6,7 +6,7 @@ find_package(GTest REQUIRED)
 include_directories(${GTEST_INCLUDE_DIRS})
 message(STATUS "  GTEST_INCLUDE_DIRS  ${GTEST_INCLUDE_DIRS}")
 
-add_executable(unit_tests EVTest.cpp simQueueTest.cpp ../random/src/simpleRandomGen.cpp ../ev/src/ev.cpp)
+add_executable(unit_tests EVTest.cpp simQueueTest.cpp platformTest.cpp ../random/src/simpleRandomGen.cpp ../random/src/evenlyGen.cpp ../ev/src/ev.cpp)
 
 target_link_libraries(unit_tests     
     ${GTEST_BOTH_LIBRARIES} 

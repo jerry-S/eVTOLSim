@@ -13,7 +13,7 @@ vector<int> EvenlyGenAlg::generate(int typeNum, int totalNum) {
     }
 
     for (int i = result.size(); i < totalNum; ++i) {
-        result.push_back(typeNum - 1);
+        result.push_back((i - result.size()) % typeNum);
     }
 
     return result;
