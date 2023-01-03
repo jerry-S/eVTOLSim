@@ -25,7 +25,7 @@ using namespace std;
  * the priorityQueue
  */
 template <class T, class Container, class Compare, class EnterTrigger, class ExitTrigger>
-class SimQueue {
+class CapQueue {
 public:
     /**
      * @brief Create a SimQueue
@@ -33,7 +33,7 @@ public:
      * @param cap capacity of priority Queue
      * @return SimQueue
      */
-    SimQueue(int cap) : capacity(cap) {}
+    CapQueue(int cap) : capacity(cap) {}
 
     /**
      * @brief Try to push into priority Queue
@@ -41,9 +41,9 @@ public:
      * @param curr the time at which tyring to push into priority Queue
      * @return void
      */
-    void push(double curr, T ev) {
+    void push(T ev) {
         if (runningQueue.size() < capacity) {
-            enterTrigger(curr, ev);
+            enterTrigger(ev);
             runningQueue.push(ev);
         } else {
             waitingQueue.push(ev);
@@ -120,10 +120,9 @@ public:
      */
     void printRunningQueue() {
         vector<T> tmp;
-        cout.precision(4);
+
         for (int i = runningQueue.size(); i > 0; --i) {
-            double endTime = runningQueue.top()->getExpectEndTime();
-            cout << runningQueue.top()->getVendorIndex() << "[" << endTime << "] ";
+            cout << runningQueue.top()->getVendorIndex() << " ";
             tmp.push_back(runningQueue.top());
             runningQueue.pop();
         }

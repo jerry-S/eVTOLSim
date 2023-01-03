@@ -6,17 +6,6 @@
 
 using namespace std;
 
-vector<Dict_entry> dict_entries = {
-    // Company   speed battCap  TimeCharge  EnergyUse  Passenger ProbFault
-    {"Alpha", {120, 320, 0.60, 1.6, 4, 0.25}},
-    {"Bravo", {100, 100, 0.20, 1.5, 5, 0.10}},
-    {"Charlie", {160, 220, 0.80, 2.2, 3, 0.05}},
-    {"Delta", {90, 120, 0.62, 0.8, 2, 0.22}},
-    {"Echo", {30, 150, 0.30, 5.8, 2, 0.61}},
-};
-
-using namespace std;
-
 /**
  * Platform Class Test.
  *
@@ -37,7 +26,7 @@ TEST_F(PlatformTest, Test1) {
 
     vector<Dict_entry> dict_entries = {
         // Company   speed battCap  TimeCharge  EnergyUse  Passenger ProbFault
-        {"testCompany", {200, 320, 2.0, 1.6, 4, 0.25}},  
+        {"testCompany", {200, 320, 2.0, 1.6, 4, 0.25}},  //the EV can fly 1 hour, charge need 2 h
     };
   
     SimPlatform<EvenlyGenAlg> simPlatform(
@@ -51,5 +40,39 @@ TEST_F(PlatformTest, Test1) {
     EXPECT_DOUBLE_EQ(mergedStat[0].getTotalChargeTime(), 2.0);
     EXPECT_DOUBLE_EQ(mergedStat[0].getTotalFlights(), 1.0);
     EXPECT_DOUBLE_EQ(mergedStat[0].getTotalCharges(), 1.0);
+    return;
+}
+
+TEST_F(PlatformTest, Test2) {
+    int totalEVs = 2;
+    int totalChargers = 1;
+    double totalSimHours = 3.0;
+
+    vector<Dict_entry> dict_entries = {
+        // Company   speed battCap  TimeCharge  EnergyUse  Passenger ProbFault
+        {"testCompany", {200, 320, 1.5, 1.6, 4, 0.25}},  
+        {"testCompany1", {200, 320, 1.5, 1.6, 4, 0.25}},  
+
+    };
+  
+    SimPlatform<EvenlyGenAlg> simPlatform(
+        dict_entries, totalEVs, totalChargers, totalSimHours);
+    simPlatform.enableDebug(false);
+    simPlatform.run();
+    vector<EV> mergedStat = simPlatform.getMergedStat();
+
+    EXPECT_EQ(mergedStat.size(), 2);
+    EXPECT_DOUBLE_EQ(mergedStat[0].getTotalFlyTime(), 1.5);
+    EXPECT_DOUBLE_EQ(mergedStat[1].getTotalFlyTime(), 1.0);
+
+    EXPECT_DOUBLE_EQ(mergedStat[0].getTotalChargeTime(), 1.5);
+    EXPECT_DOUBLE_EQ(mergedStat[1].getTotalChargeTime(), 0.5);
+
+    EXPECT_DOUBLE_EQ(mergedStat[0].getTotalFlights(), 2.0);
+    EXPECT_DOUBLE_EQ(mergedStat[1].getTotalFlights(), 1.0);
+
+    EXPECT_DOUBLE_EQ(mergedStat[0].getTotalCharges(), 1.0);
+    EXPECT_DOUBLE_EQ(mergedStat[1].getTotalCharges(), 1.0);
+
     return;
 }

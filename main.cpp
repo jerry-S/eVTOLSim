@@ -25,7 +25,7 @@ int main(int argc, char** argv) {
     //SimPlatform<SimpleRandomGenAlg> simPlatform(
     SimPlatform<EvenlyGenAlg> simPlatform(
         dict_entries, totalEVs, totalChargers, totalSimHours);
-    simPlatform.enableDebug(false);
+    simPlatform.enableDebug(true);
     simPlatform.run();
     return 0;
 }
