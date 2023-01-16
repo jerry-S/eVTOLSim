@@ -32,7 +32,7 @@ This project demos the eVTOL Simulation platforman
 
 SimQueue is a class with the following extend capability of std::priorityQueue
 
-1.  It can set sizef of the queue. Once the queue is full, the further push will go into a waiting
+1.  It can set size of the priority queue. Once the queue is full, the further push will go into a waiting
     FIFO queue. When being popped, and the waiting queue is not empty, it will automatically pop an
     entry from waiting FIFO queue and push into priority Queue
 2.  BEFORE entry being pushed into the priority Queue, EnterTrigger function being called
@@ -68,4 +68,4 @@ The class runs the Simulation. It does the following
 4. When simulation time reached. Force to land all EVs and disconnect charges
 5. Print Summary
 
-default it runs as debug mode to print friendly progress while running. Set "constexpr bool debug" at line 19 main.cpp to false to run full speed
+default it runs as debug mode to print friendly progress while running. call simPlatform.enableDebug(false) to run at full speed;

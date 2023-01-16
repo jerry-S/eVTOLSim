@@ -208,7 +208,7 @@ public:
         }
 
         /**
-         * Repeatly find next trigger time (either an EV battery out or an EV charge)
+         * Repeatly find next trigger time (either an EV out of battery or an EV charged)
          * Till allowed Simulation time reached
          * if it is EV out of battery, then pop from flying Queue and push into charge queue
          * if it is EV charged, then pop from charging Queue and push into fly queue
