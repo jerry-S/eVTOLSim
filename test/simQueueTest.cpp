@@ -79,4 +79,15 @@ TEST_F(SimQueueTest, Test1) {
     EXPECT_EQ(simQueue->size(), 3);
     // since index 1 has pqSortingKey being 2, which is the smallest now, so it is at the top
     test_equal(simQueue->top(), TestEntry{1, 2, 0, 0});
+
+    // pop one at time (3), note exit time should be 3
+    test_equal(simQueue->pop(3), TestEntry{1, 2, 0, 3});
+    EXPECT_EQ(simQueue->size(), 2);
+
+    // pop one at time (4), note exit time should be 4
+    test_equal(simQueue->pop(4), TestEntry{3, 3, 0, 4});
+    EXPECT_EQ(simQueue->size(), 1);
+
+    // pop one at time (5), note exit time should be 5, enter time should be 2
+    test_equal(simQueue->pop(5), TestEntry{4, 3, 2, 5});
 }

@@ -16,13 +16,13 @@ class EvTest : public ::testing::Test {
 private:
     void SetUp() {
         myEVSpec = make_shared<EVSpec>(
-            // Company   speed battCap  TimeCharge  EnergyUse  Passenger ProbFault
-            120,
-            320,
-            0.60,
-            1.6,
-            4,
-            0.25);
+
+            120,//SPEED
+            320,//BATT CAPACITY
+            0.60,//TIME TO CHARGE
+            1.6,//ENGERGY USE KWH/MILE
+            4,//PASSENGER
+            0.25);//PROBFAULT
     };
 
 public:
@@ -35,6 +35,8 @@ TEST_F(EvTest, Test1) {
     double maxChargeTime = myEVSpec->getChargeTime();
     cout << "MaxFlyTime " << maxFlyTime << " maxChargeTime " << maxChargeTime << endl;
     EXPECT_EQ(ev.getVendorIndex(), 0);
+
+    EXPECT_EQ(maxFlyTime, 320/1.6/120);
 
     ev.startFly(0);
     EXPECT_DOUBLE_EQ(ev.getExpectEndTime(), maxFlyTime);

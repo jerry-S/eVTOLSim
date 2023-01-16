@@ -50,8 +50,8 @@ TEST_F(PlatformTest, Test2) {
 
     vector<Dict_entry> dict_entries = {
         // Company   speed battCap  TimeCharge  EnergyUse  Passenger ProbFault
-        {"testCompany", {200, 320, 1.5, 1.6, 4, 0.25}},  
-        {"testCompany1", {200, 320, 1.5, 1.6, 4, 0.25}},  
+        {"testCompany", {200, 320, 1.5, 1.6, 4, 0.25}},  //the EV can fly 1 hour, charge need 1.5 h
+        {"testCompany1", {200, 320, 1.5, 1.6, 4, 0.25}},  //the EV can fly 1 hour, charge need 1.5 h
 
     };
   
